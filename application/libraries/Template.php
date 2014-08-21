@@ -42,7 +42,7 @@
 			/** Check if setting is from db or from file **/
 			$this->ci->config->load('application', TRUE);
 			$config = $this->ci->config->item('template', 'application');
-			if($config['db']== TRUE) {
+			if($config['db']== true) {
 			/** get setting from db 1st **/
 			$this->setting = $this->get_setting();
 			$templates = $this->get_template();
@@ -55,9 +55,10 @@
 			} else {
 				$this->setting = '';
 				$this->main_title = $this->ci->config->item('site_name','application');
-				$this->base_dir = $this->ci->config->item('base_dir','application');
+				$this->base_dir = $config['base_dir'];
 				
 			}
+			//var_dump($config['theme']);
 			
 			// get setting from template config file
 			$this->tpl =& $this->tpl_config();
@@ -94,9 +95,8 @@
 				{
 					return $_tpl_config[0];
 				}
-			
-				$cfg_path = FCPATH.'/'.$this->theme_path.'/'.$this->template.'/config.php';
-				var_dump($cfg_path);
+				
+				$cfg_path = FCPATH.'/'.$this->theme_path.'/default/config.php';
 				if ( ! file_exists($cfg_path))
 				{
 					show_error('The <strong>TEMPLATE</strong> configuration file does not exist.');
