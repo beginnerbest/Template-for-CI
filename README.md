@@ -3,7 +3,9 @@ Template-for-CI
 
 Template for codeigniter
  - Added LESS for front end developer to use with.
- - Config under config/application.php
+ - Main config under config/application.php
+ 
+ $config['template'][];
   
  
  Config Detail: usage
@@ -15,3 +17,6 @@ Template for codeigniter
  $config['db] = true;
 
  read config from database by dump the table from sql file provided.
+ 
+ $this->template->view('file',$data);
+ $this->template->publish();
